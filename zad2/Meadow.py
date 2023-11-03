@@ -2,21 +2,18 @@ from Wolf import Wolf
 from Sheep import Sheep
 
 class Meadow:
+    sheepQuantity = 15
     def __init__(self):
-        self.sheeps = []  # Utwórz listę na owce
-        self.wolf = Wolf()  # Utwórz wilka
+        self.sheeps = []
+        self.wolf = Wolf()
+        for sheep in range(self.sheepQuantity):
+            self.sheeps.append(Sheep(sheep+1))
 
-    def addSheep(self, sheep):
-        self.sheeps.append(sheep)
 
-    def removeSheep(self, sheep):
-        self.sheeps.remove(sheep)
+    def makeARound(self):
+        for sheep in self.sheeps:
+            sheep.move()
+        self.wolf.move(self.sheeps)
+        self.wolf.reportPosition()
+        print("Sheeps left:", len(self.sheeps))
 
-meadow = Meadow()
-for i in range(5):
-    sheep = Sheep(i+1)
-    meadow.addSheep(sheep)
-print(meadow.sheeps)
-while(len(meadow.sheeps)>0):
-    meadow.wolf.move(meadow.sheeps)
-print(meadow.sheeps)

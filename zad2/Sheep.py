@@ -21,7 +21,7 @@ class Sheep:
         self.seqenceNumber = Number
 
 
-'''owieczka = Sheep()
+'''owieczka = Sheep(1)
 print(owieczka.position)
 owieczka.move()
 print(owieczka.position)

@@ -5,6 +5,9 @@ class Wolf:
     position = (0, 0)
     move_distance = 1
 
+    def reportPosition(self):
+        print("Wolf is at position:", round(self.position[0],3), round(self.position[1],3))
+
     def move(self, sheepsList):
         findedSheep = self.findNearestSheep(sheepsList)
         if(findedSheep[1]<self.move_distance):
