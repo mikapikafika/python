@@ -17,7 +17,6 @@ for i in range(5):
     sheep = Sheep(i+1)
     meadow.addSheep(sheep)
 print(meadow.sheeps)
-meadow.wolf.move(meadow.sheeps)
-print(meadow.sheeps)
-meadow.wolf.move(meadow.sheeps)
+while(len(meadow.sheeps)>0):
+    meadow.wolf.move(meadow.sheeps)
 print(meadow.sheeps)

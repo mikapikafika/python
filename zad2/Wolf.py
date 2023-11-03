@@ -10,13 +10,24 @@ class Wolf:
         if(findedSheep[1]<self.move_distance):
             self.position = findedSheep[0].position
             sheepsList.remove(findedSheep[0])
-            print("I have eaten sheep number: ", findedSheep[0].seqenceNumber)
+            print("I have eaten sheep number:", findedSheep[0].seqenceNumber)
+        else:
+            delta_x = findedSheep[0].position[0] - self.position[0]
+            delta_y = findedSheep[0].position[1] - self.position[1]
+            distance_to_sheep = sqrt(delta_x ** 2 + delta_y ** 2)
+            ratio = self.move_distance / distance_to_sheep
+            new_x = self.position[0] + delta_x * ratio
+            new_y = self.position[1] + delta_y * ratio
+            self.position = (new_x, new_y)
+            print("I am chasing sheep number:", findedSheep[0].seqenceNumber)
         return sheepsList
 
     def findNearestSheep(self, sheepsList):
         nearestSheep = []
         for sheep in sheepsList:
-            distance = sqrt(pow(self.position[0] - sheep.position[0], 2) + pow(self.position[1] - sheep.position[1], 2))
+            delta_x = sheep.position[0] - self.position[0]
+            delta_y = sheep.position[1] - self.position[1]
+            distance = sqrt(delta_x ** 2 + delta_y ** 2)
             if(nearestSheep == [] or nearestSheep[1] > distance):
                 nearestSheep = (sheep, distance)
         return nearestSheep
