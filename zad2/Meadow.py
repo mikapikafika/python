@@ -1,6 +1,7 @@
 from Wolf import Wolf
 from Sheep import Sheep
 
+
 class Meadow:
     sheepQuantity = 15
 
@@ -9,7 +10,6 @@ class Meadow:
         self.wolf = Wolf()
         for sheep in range(self.sheepQuantity):
             self.sheeps.append(Sheep(sheep))
-
 
     def makeARound(self):
         for sheep in self.sheeps:
@@ -26,11 +26,8 @@ class Meadow:
                 counter += 1
         return counter
 
-    def getSheepStatus(sheep):
-        dataRow = (sheep.seqenceNumber, sheep.position, sheep.alive)
-        return dataRow
-
-    def displaySheeps(self):
+    def getSheepsPositions(self):
+        positions = []
         for sheep in self.sheeps:
-            dataRow = Meadow.getSheepStatus(sheep)
-            print(dataRow)
+            positions.append(sheep.reportPosition())
+        return positions

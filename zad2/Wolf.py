@@ -27,7 +27,7 @@ class Wolf:
         return sheeps
 
     def reportPosition(self):
-        return "Wolf is at position:", round(self.position[0], 3), round(self.position[1], 3)
+        return round(self.position[0], 3), round(self.position[1], 3)
     def findTarget(self, sheeps):
         aliveSheeps = []
         for sheep in sheeps:

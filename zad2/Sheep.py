@@ -18,6 +18,9 @@ class Sheep:
         new_x = self.position[0] + (direction[0] * self.move_distance)
         new_y = self.position[1] + (direction[1] * self.move_distance)
         self.position = (new_x, new_y)
+    def reportPosition(self):
+        if self.position != None:
+            return round(self.position[0], 3), round(self.position[1], 3)
 
 
 
