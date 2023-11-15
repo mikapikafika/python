@@ -1,13 +1,13 @@
 from Meadow import Meadow
-from jsonWriter import JsonWriter
-from csvWriter import csvWriter
+from Jsonwriter import Jsonwriter
+from Csvwriter import Csvwriter
 
 
 class Game:
     maxRounds = 50
     meadow = Meadow()
-    jsonwriter = JsonWriter("pos.json")
-    csvwriter = csvWriter("alive.csv")
+    jsonwriter = Jsonwriter("pos.json")
+    csvwriter = Csvwriter("alive.csv")
     for i in range(maxRounds):
         meadow.makeARound()
         jsonwriter.position_info(i, meadow.wolf.reportPosition(),

@@ -1,7 +1,7 @@
 import json
 
 
-class JsonWriter:
+class Jsonwriter:
     def __init__(self, path):
         self.path = path
         self.file = open(path, "w")

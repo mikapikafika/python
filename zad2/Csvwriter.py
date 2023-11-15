@@ -1,7 +1,7 @@
 import csv
 
 
-class csvWriter:
+class Csvwriter:
     def __init__(self, path):
         self.path = path
         self.file = open(path, "w")
