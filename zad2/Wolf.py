@@ -19,7 +19,7 @@ class Wolf:
                     sheep.alive = False
                     sheep.position = None
                     break
-            print("I have eaten sheep number:", targeted_sheep.seqence_number)
+            print("I have eaten sheep number:", targeted_sheep.sequence_number)
         else:
             delta_x = self.getXDistance(targeted_sheep)
             delta_y = self.getYDistance(targeted_sheep)
@@ -27,7 +27,7 @@ class Wolf:
             new_x = self.position[0] + delta_x * ratio
             new_y = self.position[1] + delta_y * ratio
             self.position = (new_x, new_y)
-            print("I am chasing sheep number:", targeted_sheep.seqence_number)
+            print("I am chasing sheep number:", targeted_sheep.sequence_number)
         return sheep
 
     def reportPosition(self):
