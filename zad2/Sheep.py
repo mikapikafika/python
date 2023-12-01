@@ -3,8 +3,8 @@ import random
 
 class Sheep:
     move_distance = 0.5
-    directions = ((0, 1), (1, 0), (0, -1), (-1, 0))
     InitPosLimit = 10.0
+    directions = ((0, 1), (1, 0), (0, -1), (-1, 0))
 
     def __init__(self, number):
         new_x = random.uniform(-self.InitPosLimit, self.InitPosLimit)
