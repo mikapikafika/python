@@ -1,3 +1,5 @@
+import keyboard
+
 from Meadow import Meadow
 from Jsonwriter import Jsonwriter
 from Csvwriter import Csvwriter
@@ -5,18 +7,27 @@ from Csvwriter import Csvwriter
 
 class Game:
     maxRounds = 50
-    meadow = Meadow()
+    break_after_round = False
     jsonwriter = Jsonwriter("data/pos.json")
     csvwriter = Csvwriter("data/alive.csv")
-    def run(self, maxRounds, meadow, jsonwriter, csvwriter):
-        for i in range(maxRounds):
-            meadow.makeARound()
-            jsonwriter.position_info(i, meadow.wolf.reportPosition(),
-                                     meadow.get_sheep_positions())
-            csvwriter.aliveSheep(i, meadow.aliveSheepAmount())
-            if meadow.aliveSheepAmount() == 0:
+
+    def __init__(self):
+        self.meadow = Meadow()
+
+    def run(self):
+        for i in range(self.maxRounds):
+            self.meadow.makeARound()
+            self.jsonwriter.position_info(i, self.meadow.wolf.reportPosition(),
+                                          self.meadow.get_sheep_positions())
+            self.csvwriter.aliveSheep(i, self.meadow.aliveSheepAmount())
+            if self.meadow.aliveSheepAmount() == 0:
                 print("Wolf won")
                 break
-        if meadow.aliveSheepAmount() != 0:
+            if self.break_after_round:
+                input("Press any key to continue \n")
+        if self.meadow.aliveSheepAmount() != 0:
             print("Sheep won")
-            print("Sheep left:", meadow.aliveSheepAmount())
+            print("Sheep left:", self.meadow.aliveSheepAmount())
+
+        print(self.maxRounds)
+        print(self.meadow.sheepQuantity)

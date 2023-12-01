@@ -5,6 +5,7 @@ import logging
 from Game import Game
 from Meadow import Meadow
 
+
 parser = argparse.ArgumentParser(description='Process some integers.')
 
 parser.add_argument('-c', '--config', metavar='FILE', type=Path)
@@ -12,7 +13,7 @@ parser.add_argument('-c', '--config', metavar='FILE', type=Path)
 parser.add_argument('-l', '--log', metavar='LEVEL', type=int)
 parser.add_argument('-r', '--rounds', metavar='NUM ', type=int)
 parser.add_argument('-s', '--sheep', metavar='NUM ', type=int)
-parser.add_argument('-w', '--wait')
+parser.add_argument('-w', '--wait', action='store_true')
 
 args = parser.parse_args()
 
@@ -39,3 +40,8 @@ if args.sheep is not None:
         raise 'Sheep number must be greater than 0'
     else:
         Meadow.sheepQuantity = args.sheep
+if args.wait:
+    Game.break_after_round = True
+gra = Game()
+gra.run()
+
