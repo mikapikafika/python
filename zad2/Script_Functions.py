@@ -37,6 +37,18 @@ def load_config(path):
     with open(path, "r") as file:
         config = configparser.ConfigParser()
         config.read_file(file)
-        Sheep.InitPosLimit = float(config["Sheep"]["InitPosLimit"])
-        Sheep.move_distance = float(config["Sheep"]["MoveDist"])
-        Wolf.move_distance = float(config["Wolf"]["MoveDist"])
+
+        init_poss = float(config["Sheep"]["InitPosLimit"])
+        move_dis_sheep = float(config["Sheep"]["MoveDist"])
+        move_dis_wolf = float(config["Wolf"]["MoveDist"])
+
+        if init_poss < 0:
+            raise 'initial position limit must be greater than 0'
+        if move_dis_sheep < 0:
+            raise 'sheep move distance must be greater than 0'
+        if move_dis_wolf < 0:
+            raise 'wolf move distance must be greater than 0'
+
+        Sheep.InitPosLimit = init_poss
+        Sheep.move_distance = move_dis_sheep
+        Wolf.move_distance = move_dis_wolf

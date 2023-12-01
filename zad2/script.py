@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(description='Herzlich willkommen',
 
 parser.add_argument('-c', '--config', metavar='FILE', type=Path)
 parser.add_argument('-h', '--help', action='store_true')
-parser.add_argument('-l', '--log', metavar='LEVEL', type=int)
+parser.add_argument('-l', '--log', metavar='LEVEL', type=str, choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'])
 parser.add_argument('-r', '--rounds', metavar='NUM ', type=int)
 parser.add_argument('-s', '--sheep', metavar='NUM ', type=int)
 parser.add_argument('-w', '--wait', action='store_true')
@@ -42,6 +42,3 @@ if args.wait:
 if start:
     gra = Game()
     gra.run()
-    print(gra.meadow.wolf.move_distance)
-    print(gra.meadow.sheep[0].move_distance)
-    print(gra.meadow.sheep[0].InitPosLimit)
