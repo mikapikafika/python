@@ -61,4 +61,4 @@ def load_config(path):
 
 def create_log_file(level):
     logging.basicConfig(filename='chasing.log',
-                        format='%(levelname)s:%(message)s', level=level)
+                        format='%(level)s:%(message)s', level=level)

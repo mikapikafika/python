@@ -6,7 +6,7 @@ from Game import Game
 
 start = True
 
-parser = argparse.ArgumentParser(description='Herzlich willkommen',
+parser = argparse.ArgumentParser(description='Wolf and Sheep simulation',
                                  add_help=False)
 
 parser.add_argument('-c', '--config', metavar='FILE', type=Path)

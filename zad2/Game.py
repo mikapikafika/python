@@ -1,7 +1,4 @@
 import logging
-
-import keyboard
-
 from Meadow import Meadow
 from Jsonwriter import Jsonwriter
 from Csvwriter import Csvwriter
@@ -33,6 +30,3 @@ class Game:
             print("Sheep won")
             print("Sheep left:", self.meadow.aliveSheepAmount())
             logging.info("Simulation ended maximum rounds reached sheep won")
-
-        print(self.maxRounds)
-        print(self.meadow.sheepQuantity)

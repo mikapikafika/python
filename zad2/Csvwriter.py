@@ -1,6 +1,7 @@
 import csv
 import logging
 
+
 class Csvwriter:
     def __init__(self, path):
         self.path = path
