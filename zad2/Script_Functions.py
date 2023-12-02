@@ -1,7 +1,7 @@
 from Game import Game
 from Meadow import Meadow
 import configparser
-
+import logging
 from Sheep import Sheep
 from Wolf import Wolf
 
@@ -49,6 +49,16 @@ def load_config(path):
         if move_dis_wolf < 0:
             raise 'wolf move distance must be greater than 0'
 
+        log_message = str("data from file loaded: init_pos_limit: " + str(
+            init_poss) + ", sheep_move_dist: " + str(
+            move_dis_sheep) + ", wolf_move_dist: " + str(move_dis_wolf))
+
+        logging.debug('%s log_message %s', 'debug', log_message)
         Sheep.InitPosLimit = init_poss
         Sheep.move_distance = move_dis_sheep
         Wolf.move_distance = move_dis_wolf
+
+
+def create_log_file(level):
+    logging.basicConfig(filename='chasing.log',
+                        format='%(levelname)s:%(message)s', level=level)

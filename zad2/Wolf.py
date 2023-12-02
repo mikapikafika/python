@@ -1,4 +1,5 @@
 from math import sqrt
+import logging
 
 
 class Wolf:
@@ -20,6 +21,8 @@ class Wolf:
                     sheep.position = None
                     break
             print("I have eaten sheep number:", targeted_sheep.sequence_number)
+            logging.info("Sheep number %d was eaten",
+                         targeted_sheep.sequence_number)
         else:
             delta_x = self.getXDistance(targeted_sheep)
             delta_y = self.getYDistance(targeted_sheep)
@@ -28,6 +31,10 @@ class Wolf:
             new_y = self.position[1] + delta_y * ratio
             self.position = (new_x, new_y)
             print("I am chasing sheep number:", targeted_sheep.sequence_number)
+            logging.info("Wolf is chasing sheep number %d",
+                         targeted_sheep.sequence_number)
+        logging.debug("Wolf moved new position is %s", self.position)
+        logging.info("Wolf moved")
         return sheep
 
     def reportPosition(self):
@@ -46,6 +53,8 @@ class Wolf:
                 if distance < min_distance:
                     min_distance = distance
                     target = sheep
+        logging.debug("Wolf is chasing sheep number %d and distance is %s",
+                      target.sequence_number, min_distance)
         return target
 
     def getXDistance(self, animal):

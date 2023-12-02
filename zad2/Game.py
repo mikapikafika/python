@@ -1,3 +1,5 @@
+import logging
+
 import keyboard
 
 from Meadow import Meadow
@@ -16,18 +18,21 @@ class Game:
 
     def run(self):
         for i in range(self.maxRounds):
+            logging.info("Round %d started", i)
             self.meadow.makeARound()
             self.jsonwriter.position_info(i, self.meadow.wolf.reportPosition(),
                                           self.meadow.get_sheep_positions())
             self.csvwriter.aliveSheep(i, self.meadow.aliveSheepAmount())
             if self.meadow.aliveSheepAmount() == 0:
                 print("Wolf won")
+                logging.info("Simulation ended wolf won")
                 break
             if self.break_after_round:
                 input("Press any key to continue \n")
         if self.meadow.aliveSheepAmount() != 0:
             print("Sheep won")
             print("Sheep left:", self.meadow.aliveSheepAmount())
+            logging.info("Simulation ended maximum rounds reached sheep won")
 
         print(self.maxRounds)
         print(self.meadow.sheepQuantity)

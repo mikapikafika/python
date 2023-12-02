@@ -1,4 +1,5 @@
 import json
+import logging
 
 
 class Jsonwriter:
@@ -20,3 +21,4 @@ class Jsonwriter:
         }
         json_data = json.dumps(round_data, indent=1)
         self.write(json_data + "\n")
+        logging.debug("Data written to pos.json file")

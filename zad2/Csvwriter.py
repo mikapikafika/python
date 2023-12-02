@@ -1,5 +1,5 @@
 import csv
-
+import logging
 
 class Csvwriter:
     def __init__(self, path):
@@ -13,3 +13,4 @@ class Csvwriter:
 
     def aliveSheep(self, round_number, alive_sheep):
         self.csv_writer.writerow([round_number, alive_sheep])
+        logging.debug("Data written to alive.csv file")

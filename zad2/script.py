@@ -11,12 +11,16 @@ parser = argparse.ArgumentParser(description='Herzlich willkommen',
 
 parser.add_argument('-c', '--config', metavar='FILE', type=Path)
 parser.add_argument('-h', '--help', action='store_true')
-parser.add_argument('-l', '--log', metavar='LEVEL', type=str, choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'])
+parser.add_argument('-l', '--log', metavar='LEVEL', type=str,
+                    choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'])
 parser.add_argument('-r', '--rounds', metavar='NUM ', type=int)
 parser.add_argument('-s', '--sheep', metavar='NUM ', type=int)
 parser.add_argument('-w', '--wait', action='store_true')
 
 args = parser.parse_args()
+
+if args.log is not None:
+    create_log_file(args.log)
 
 if args.config is not None:
     load_config(args.config)
@@ -24,11 +28,6 @@ if args.config is not None:
 if args.help:
     help_message()
     start = False
-
-if args.log is not None:
-    with open('chasing.log', 'w') as file:
-        file.write("test")
-        file.close()
 
 if args.rounds is not None:
     rounds_number(args.rounds)

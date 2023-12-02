@@ -1,3 +1,5 @@
+import logging
+
 from Wolf import Wolf
 from Sheep import Sheep
 
@@ -10,14 +12,17 @@ class Meadow:
         self.wolf = Wolf()
         for sheep in range(self.sheepQuantity):
             self.sheep.append(Sheep(sheep))
+        logging.info("Initial  positions  of all sheep were determined ")
 
     def makeARound(self):
         for sheep in self.sheep:
             if sheep.alive:
                 sheep.move()
+        logging.info("All sheep moved")
         self.wolf.move(self.sheep)
         print(self.wolf.reportPosition())
         print("Sheep left:", self.aliveSheepAmount())
+        logging.info("Round ended alive sheep: %d", self.aliveSheepAmount())
 
     def aliveSheepAmount(self):
         counter = 0
