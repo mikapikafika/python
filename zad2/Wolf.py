@@ -1,56 +1,70 @@
 from math import sqrt
+import logging
+
 
 class Wolf:
-    position = (0, 0)
     move_distance = 1
+    position = (0, 0)
 
-    def move(self, sheeps):
-        targetedSheep = self.findTarget(sheeps)
-        targetedSheepDistance = self.getEuclideanDistance(targetedSheep)
+    def __init__(self):
+        pass
 
-        if (targetedSheepDistance < self.move_distance):
-            self.position = targetedSheep.position
-            for sheep in sheeps:
-                if sheep == targetedSheep:
+    def move(self, sheep):
+        targeted_sheep = self.findTarget(sheep)
+        targeted_sheep_distance = self.getEuclideanDistance(targeted_sheep)
+
+        if targeted_sheep_distance < self.move_distance:
+            self.position = targeted_sheep.position
+            for sheep in sheep:
+                if sheep == targeted_sheep:
                     sheep.alive = False
                     sheep.position = None
                     break
-            print("I have eaten sheep number:", targetedSheep.seqenceNumber)
+            print("I have eaten sheep number:", targeted_sheep.sequence_number)
+            logging.info("Sheep number %d was eaten",
+                         targeted_sheep.sequence_number)
         else:
-            delta_x = self.getXDistance(targetedSheep)
-            delta_y = self.getYDistance(targetedSheep)
-            ratio = self.move_distance / targetedSheepDistance
+            delta_x = self.getXDistance(targeted_sheep)
+            delta_y = self.getYDistance(targeted_sheep)
+            ratio = self.move_distance / targeted_sheep_distance
             new_x = self.position[0] + delta_x * ratio
             new_y = self.position[1] + delta_y * ratio
             self.position = (new_x, new_y)
-            print("I am chasing sheep number:", targetedSheep.seqenceNumber)
-        return sheeps
+            print("I am chasing sheep number:", targeted_sheep.sequence_number)
+            logging.info("Wolf is chasing sheep number %d",
+                         targeted_sheep.sequence_number)
+        logging.debug("Wolf moved new position is %s", self.position)
+        logging.info("Wolf moved")
+        return sheep
 
     def reportPosition(self):
         return round(self.position[0], 3), round(self.position[1], 3)
-    def findTarget(self, sheeps):
-        aliveSheeps = []
-        for sheep in sheeps:
+
+    def findTarget(self, sheep):
+        alive_sheep = []
+        for sheep in sheep:
             if sheep.alive:
-                aliveSheeps.append(sheep)
-        target = aliveSheeps[0]
-        minDistance = self.getEuclideanDistance(target)
-        for sheep in aliveSheeps:
+                alive_sheep.append(sheep)
+        target = alive_sheep[0]
+        min_distance = self.getEuclideanDistance(target)
+        for sheep in alive_sheep:
             if sheep.alive:
                 distance = self.getEuclideanDistance(sheep)
-                if distance < minDistance:
-                    minDistance = distance
+                if distance < min_distance:
+                    min_distance = distance
                     target = sheep
+        logging.debug("Wolf is chasing sheep number %d and distance is %s",
+                      target.sequence_number, min_distance)
         return target
 
-    def getXDistance(self, object):
-        return object.position[0] - self.position[0]
+    def getXDistance(self, animal):
+        return animal.position[0] - self.position[0]
 
-    def getYDistance(self, object):
-        return object.position[1] - self.position[1]
+    def getYDistance(self, animal):
+        return animal.position[1] - self.position[1]
 
-    def getEuclideanDistance(self, object):
-        delta_x = self.getXDistance(object)
-        delta_y = self.getYDistance(object)
-        euclideanDistance = sqrt(delta_x ** 2 + delta_y ** 2)
-        return euclideanDistance
+    def getEuclideanDistance(self, animal):
+        delta_x = self.getXDistance(animal)
+        delta_y = self.getYDistance(animal)
+        euclidean_distance = sqrt(delta_x ** 2 + delta_y ** 2)
+        return euclidean_distance
