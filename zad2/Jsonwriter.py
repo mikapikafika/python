@@ -5,13 +5,10 @@ import logging
 class Jsonwriter:
     def __init__(self, path):
         self.path = path
-        self.file = open(path, "w")
 
     def write(self, text):
-        self.file.write(text)
-
-    def close(self):
-        self.file.close()
+        with open(self.path, "a") as file:
+            file.write(text)
 
     def position_info(self, round_number, wolf_position, sheep_positions):
         round_data = {

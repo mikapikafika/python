@@ -23,14 +23,14 @@ def rounds_number(number):
     if number < 1:
         raise 'Rounds number must be greater than 0'
     else:
-        Game.maxRounds = number
+        Game.max_rounds = number
 
 
 def sheep_number(number):
     if number < 1:
         raise 'Sheep number must be greater than 0'
     else:
-        Meadow.sheepQuantity = number
+        Meadow.sheep_quantity = number
 
 
 def load_config(path):
@@ -55,8 +55,8 @@ def load_config(path):
 
         logging.debug('%s log_message %s', 'debug', log_message)
         Sheep.InitPosLimit = init_poss
-        Sheep.move_distance = move_dis_sheep
-        Wolf.move_distance = move_dis_wolf
+        Sheep.MoveDist = move_dis_sheep
+        Wolf.MoveDist = move_dis_wolf
 
 
 def create_log_file(level):

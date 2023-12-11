@@ -12,6 +12,6 @@ class Csvwriter:
     def close(self):
         self.file.close()
 
-    def aliveSheep(self, round_number, alive_sheep):
+    def alive_sheep(self, round_number, alive_sheep):
         self.csv_writer.writerow([round_number, alive_sheep])
         logging.debug("Data written to alive.csv file")
