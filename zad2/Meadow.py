@@ -1,30 +1,29 @@
 import logging
-
 from Wolf import Wolf
 from Sheep import Sheep
 
 
 class Meadow:
-    sheepQuantity = 15
+    sheep_quantity = 15
 
     def __init__(self):
         self.sheep = []
         self.wolf = Wolf()
-        for sheep in range(self.sheepQuantity):
+        for sheep in range(self.sheep_quantity):
             self.sheep.append(Sheep(sheep))
-        logging.info("Initial  positions  of all sheep were determined ")
+        logging.info("Initial positions of all sheep were determined ")
 
-    def makeARound(self):
+    def make_a_round(self):
         for sheep in self.sheep:
             if sheep.alive:
                 sheep.move()
         logging.info("All sheep moved")
         self.wolf.move(self.sheep)
-        print(self.wolf.reportPosition())
-        print("Sheep left:", self.aliveSheepAmount())
-        logging.info("Round ended alive sheep: %d", self.aliveSheepAmount())
+        print(f"My position: {self.wolf.report_position()}")
+        print(f"Sheep left: {self.alive_sheep_amount()}\n")
+        logging.info("Round ended - alive sheep: %s", self.alive_sheep_amount())
 
-    def aliveSheepAmount(self):
+    def alive_sheep_amount(self):
         counter = 0
         for sheep in self.sheep:
             if sheep.alive:
@@ -34,5 +33,5 @@ class Meadow:
     def get_sheep_positions(self):
         positions = []
         for sheep in self.sheep:
-            positions.append(sheep.reportPosition())
+            positions.append(sheep.report_position())
         return positions

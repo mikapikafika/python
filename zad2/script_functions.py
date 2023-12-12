@@ -1,7 +1,7 @@
-from Game import Game
-from Meadow import Meadow
 import configparser
 import logging
+from Game import Game
+from Meadow import Meadow
 from Sheep import Sheep
 from Wolf import Wolf
 
@@ -21,16 +21,16 @@ def help_message():
 
 def rounds_number(number):
     if number < 1:
-        raise 'Rounds number must be greater than 0'
+        raise ValueError('Rounds number must be greater than 0')
     else:
-        Game.maxRounds = number
+        Game.max_rounds = number
 
 
 def sheep_number(number):
     if number < 1:
-        raise 'Sheep number must be greater than 0'
+        raise ValueError('Sheep number must be greater than 0')
     else:
-        Meadow.sheepQuantity = number
+        Meadow.sheep_quantity = number
 
 
 def load_config(path):
@@ -43,22 +43,22 @@ def load_config(path):
         move_dis_wolf = float(config["Wolf"]["MoveDist"])
 
         if init_poss < 0:
-            raise 'initial position limit must be greater than 0'
+            raise ValueError('Initial position limit must be greater than 0')
         if move_dis_sheep < 0:
-            raise 'sheep move distance must be greater than 0'
+            raise ValueError('Sheep move distance must be greater than 0')
         if move_dis_wolf < 0:
-            raise 'wolf move distance must be greater than 0'
+            raise ValueError('Wolf move distance must be greater than 0')
 
-        log_message = str("data from file loaded: init_pos_limit: " + str(
-            init_poss) + ", sheep_move_dist: " + str(
-            move_dis_sheep) + ", wolf_move_dist: " + str(move_dis_wolf))
+        log_message = str("Data from file loaded: init_pos_limit: " + str(
+                        init_poss) + ", sheep_move_dist: " + str(
+                        move_dis_sheep) + ", wolf_move_dist: " + str(move_dis_wolf))
 
         logging.debug('%s log_message %s', 'debug', log_message)
-        Sheep.InitPosLimit = init_poss
-        Sheep.move_distance = move_dis_sheep
-        Wolf.move_distance = move_dis_wolf
+        Sheep.init_pos_limit = init_poss
+        Sheep.move_dist = move_dis_sheep
+        Wolf.move_dist = move_dis_wolf
 
 
 def create_log_file(level):
     logging.basicConfig(filename='chasing.log',
-                        format='%(level)s:%(message)s', level=level)
+                        format='%(levelname)s:%(message)s', level=level)
