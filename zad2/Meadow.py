@@ -21,7 +21,7 @@ class Meadow:
         self.wolf.move(self.sheep)
         print(f"My position: {self.wolf.report_position()}")
         print(f"Sheep left: {self.alive_sheep_amount()}\n")
-        logging.info(f"Round ended - alive sheep: {self.alive_sheep_amount()}")
+        logging.info("Round ended - alive sheep: %s", self.alive_sheep_amount())
 
     def alive_sheep_amount(self):
         counter = 0

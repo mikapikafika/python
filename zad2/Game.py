@@ -15,7 +15,8 @@ class Game:
 
     def run(self):
         for i in range(self.max_rounds):
-            logging.info(f"Round {i} started")
+            logging.info("Round %s started", i)
+            print(f"Round {i + 1} started")
             self.meadow.make_a_round()
             self.jsonwriter.position_info(i, self.meadow.wolf.report_position(),
                                           self.meadow.get_sheep_positions())
@@ -27,7 +28,7 @@ class Game:
                 break
             if self.break_after_round:
                 input("Press any key to continue \n")
-        if self.meadow.alive_sheep_amount() != 0:
+        if alive_sheep != 0:
             print("Sheep won")
             print(f"Sheep left: {alive_sheep}")
             logging.info("Simulation ended, maximum rounds reached. Sheep won")

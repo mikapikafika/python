@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-from Script_Functions import *
+from script_functions import *
 from Game import Game
 
 
