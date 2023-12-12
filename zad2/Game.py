@@ -15,7 +15,7 @@ class Game:
 
     def run(self):
         for i in range(self.max_rounds):
-            logging.info("Round %s started", i)
+            logging.info("Round %s started", i + 1)
             print(f"Round {i + 1} started")
             self.meadow.make_a_round()
             self.jsonwriter.position_info(i, self.meadow.wolf.report_position(),
