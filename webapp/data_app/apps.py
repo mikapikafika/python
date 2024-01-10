@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WebappAppConfig(AppConfig):
+class DataAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'webapp_app'
+    name = 'data_app'
