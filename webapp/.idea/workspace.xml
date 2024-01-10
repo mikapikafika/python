@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="48332010-0d3c-413c-a059-07c20914a097" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp_app/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp_app/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp_app/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp_app/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp_app/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp_app/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp_app/views.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -34,10 +39,16 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature/database",
+    "last_opened_file_path": "F:/Studia/sem5/python/webapp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -76,6 +87,9 @@
       <updated>1704921684670</updated>
       <workItem from="1704921700342" duration="29000" />
       <workItem from="1704921891747" duration="2000" />
+      <workItem from="1704921910136" duration="113000" />
+      <workItem from="1704922919665" duration="523000" />
+      <workItem from="1704923695566" duration="597000" />
     </task>
     <servers />
   </component>

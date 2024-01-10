@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Sequence Number</th>
+        <th>Feature 1</th>
+        <th>Feature 2</th>
+        <th>Category</th>
+        <th>Action</th>
+    </tr>
+    {% for data_point in data_points %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ data_point.feature_1 }}</td>
+            <td>{{ data_point.feature_2 }}</td>
+            <td>{{ data_point.category }}</td>
+            <td>
+                <form action="{% url 'delete_data_point' data_point_id %}"
+                      method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
