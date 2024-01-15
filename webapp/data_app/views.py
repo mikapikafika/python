@@ -32,8 +32,8 @@ def add_data(request):
 
 def delete_data(request, data_point_id):
     if request.method == 'POST':
-        # data_point = DataPoint.objects.get(id=data_point_id)
-        data_point = get_object_or_404(DataPoint, pk=data_point_id)
+        data_point = DataPoint.objects.get(pk=data_point_id)
+        # data_point = get_object_or_404(DataPoint, pk=data_point_id)
         data_point.delete()
         return redirect('index')
     else:
