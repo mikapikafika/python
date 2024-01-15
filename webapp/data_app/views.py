@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseBadRequest
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -9,29 +9,37 @@ from .serializers import DataPointSerializer
 
 
 def index(request):
-    # Get all DataPoint objects from the database and pass them to the template
     data_points = DataPoint.objects.all()
     return render(request, 'index.html',
                   {'data_points': data_points})
 
 
-def add_data_point(request):
+def add_data(request):
     if request.method == 'POST':
         form = DataPointForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
         else:
-            return HttpResponseBadRequest('Invalid parameters')
+            context = {'error_code': 400,
+                       'error_message': 'Invalid data submitted'}
+            return render(request, 'error.html', context=context,
+                          status=400)
     else:
         form = DataPointForm()
-    return render(request, 'add.html')
+    return render(request, 'add.html', {'form': form})
 
 
-def delete_data_point(request, data_point_id):
-    data_point = DataPoint.objects.get(id=data_point_id)
-    data_point.delete()
-    return redirect('index')
+def delete_data(request, data_point_id):
+    if request.method == 'POST':
+        data_point = DataPoint.objects.get(pk=data_point_id)
+        # data_point = get_object_or_404(DataPoint, pk=data_point_id)
+        data_point.delete()
+        return redirect('index')
+    else:
+        context = {'error_code': 404, 'error_message': 'Not found'}
+        return render(request, 'error.html', context=context,
+                      status=404)
 
 
 # API
