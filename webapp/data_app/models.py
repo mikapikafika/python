@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class DataPoint(models.Model):
+    feature1 = models.FloatField()
+    feature2 = models.FloatField()
+    category = models.IntegerField()
