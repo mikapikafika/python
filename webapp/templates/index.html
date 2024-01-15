@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Data {% endblock %}
+
+{% block content %}
 <table>
     <tr>
         <th>Sequence Number</th>
         <th>Feature 1</th>
         <th>Feature 2</th>
         <th>Category</th>
-        <th>Action</th>
+        <th></th>
     </tr>
     {% for data_point in data_points %}
         <tr>
-            <td>{{ forloop.counter }}</td>
+            <td>{{ data_point.id }}</td>
             <td>{{ data_point.feature_1 }}</td>
             <td>{{ data_point.feature_2 }}</td>
             <td>{{ data_point.category }}</td>
             <td>
-                <form action="{% url 'delete_data_point' data_point_id %}"
+                <form action="{% url 'delete' data_point.id %}"
                       method="POST">
                     {% csrf_token %}
                     <input type="submit" value="Delete">
@@ -29,5 +27,4 @@
         </tr>
     {% endfor %}
 </table>
-</body>
-</html>
+{% endblock %}
