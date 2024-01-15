@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import DataPoint
+from .forms import DataPointForm
 from .serializers import DataPointSerializer
 
 
@@ -16,21 +17,15 @@ def index(request):
 
 def add_data_point(request):
     if request.method == 'POST':
-        try:
-            feature1 = float(request.POST['feature1'])
-            feature2 = float(request.POST['feature2'])
-            category = int(request.POST['category'])
-
-            # Create a new DataPoint object and save it to the database
-            data_point = DataPoint(feature1=feature1, feature2=feature2,
-                                   category=category)
-            data_point.save()
-
+        form = DataPointForm(request.POST)
+        if form.is_valid():
+            form.save()
             return redirect('index')
-        except (ValueError, KeyError):
+        else:
             return HttpResponseBadRequest('Invalid parameters')
     else:
-        return render(request, 'add.html')
+        form = DataPointForm()
+    return render(request, 'add.html')
 
 
 def delete_data_point(request, data_point_id):
