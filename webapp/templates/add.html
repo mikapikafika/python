@@ -1,11 +1,24 @@
 {% extends "base.html" %}
-{% load static %}
-{% block title %} Data {% endblock %}
+{% block title %} Add Data Point {% endblock %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add Data Point</button>
-    </form>
+    <div class="form-container">
+        <h1 class="text-center">Add Data Point</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary" type="submit">Add Data Point
+            </button>
+        </form>
+    </div>
+
+    <style>
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+    </style>
 {% endblock %}

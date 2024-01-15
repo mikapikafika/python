@@ -15,7 +15,7 @@ def index(request):
                   {'data_points': data_points})
 
 
-def add_data_point(request):
+def add_data(request):
     if request.method == 'POST':
         form = DataPointForm(request.POST)
         if form.is_valid():
@@ -25,10 +25,10 @@ def add_data_point(request):
             return HttpResponseBadRequest('Invalid parameters')
     else:
         form = DataPointForm()
-    return render(request, 'add.html')
+    return render(request, 'add.html', {'form': form})
 
 
-def delete_data_point(request, data_point_id):
+def delete_data(request, data_point_id):
     data_point = DataPoint.objects.get(id=data_point_id)
     data_point.delete()
     return redirect('index')

@@ -3,28 +3,42 @@
 {% block title %} Data {% endblock %}
 
 {% block content %}
-<table>
-    <tr>
-        <th>Sequence Number</th>
-        <th>Feature 1</th>
-        <th>Feature 2</th>
-        <th>Category</th>
-        <th></th>
-    </tr>
-    {% for data_point in data_points %}
-        <tr>
-            <td>{{ data_point.id }}</td>
-            <td>{{ data_point.feature_1 }}</td>
-            <td>{{ data_point.feature_2 }}</td>
-            <td>{{ data_point.category }}</td>
-            <td>
-                <form action="{% url 'delete' data_point.id %}"
-                      method="POST">
-                    {% csrf_token %}
-                    <input type="submit" value="Delete">
-                </form>
-            </td>
-        </tr>
-    {% endfor %}
-</table>
+    <div class="table-container">
+        <h1 class="text-center">Data Points</h1>
+        <table class="table table-hover">
+            <tr>
+                <th scope="col">Sequence Number</th>
+                <th scope="col">Feature 1</th>
+                <th scope="col">Feature 2</th>
+                <th scope="col">Category</th>
+                <th scope="col"></th>
+            </tr>
+            {% for data_point in data_points %}
+                <tr>
+                    <td>{{ data_point.id }}</td>
+                    <td>{{ data_point.feature1 }}</td>
+                    <td>{{ data_point.feature2 }}</td>
+                    <td>{{ data_point.category }}</td>
+                    <td>
+                        <form action="{% url 'delete' data_point.id %}"
+                              method="POST">
+                            {% csrf_token %}
+                            <button class="btn btn-danger" type="submit">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <style>
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 {% endblock %}
