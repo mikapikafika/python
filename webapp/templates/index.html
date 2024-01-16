@@ -3,8 +3,8 @@
 
 {% block content %}
     <div class="table-container container">
-        <h1 class="text-center">Data Points</h1>
-        <table class="table table-hover">
+        <h1 class="text-center mt-lg-5 mb-3">Data Points</h1>
+        <table class="table table-striped">
             <tr>
                 <th scope="col">Sequence Number</th>
                 <th scope="col">Feature 1</th>
@@ -22,7 +22,8 @@
                         <form action="{% url 'delete' data_point.id %}"
                               method="POST">
                             {% csrf_token %}
-                            <button class="btn btn-danger" type="submit">
+                            <button class="btn btn-outline-danger"
+                                    type="submit">
                                 Delete
                             </button>
                         </form>
