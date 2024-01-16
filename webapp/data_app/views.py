@@ -32,8 +32,8 @@ def add_data(request):
 
 def delete_data(request, data_point_id):
     if request.method == 'POST':
-        data_point = DataPoint.objects.get(pk=data_point_id)
-        # data_point = get_object_or_404(DataPoint, pk=data_point_id)
+        # data_point = DataPoint.objects.get(pk=data_point_id)
+        data_point = get_object_or_404(DataPoint, pk=data_point_id)
         data_point.delete()
         return redirect('index')
     else:
@@ -45,7 +45,7 @@ def delete_data(request, data_point_id):
 # API
 
 @api_view(['GET', 'POST'])
-def data_point_list(request):
+def data_point_manage(request):
     if request.method == 'GET':
         data_points = DataPoint.objects.all()
         serializer = DataPointSerializer(data_points, many=True)
