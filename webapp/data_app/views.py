@@ -1,5 +1,4 @@
 import json
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from rest_framework import status
@@ -17,21 +16,13 @@ def index(request):
 
 def add_data(request):
     if request.method == 'POST':
-        try:
-            data = json.loads(request.body.decode('utf-8'))
-        except json.JSONDecodeError:
-            context = {'error_code': 400,
-                       'error_message': 'Invalid data submitted'}
-            return render(request, 'error.html', context=context,
-                          status=400)
-
-        form = DataPointForm(data)
+        form = DataPointForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
         else:
             context = {'error_code': 400,
-                       'error_message': 'Invalid data submitted'}
+                       'error_message': 'Invalid data'}
             return render(request, 'error.html', context=context,
                           status=400)
     else:
@@ -61,10 +52,15 @@ def manage_data_via_api(request):
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
+        category = request.data.get('category', '')
+        if not category.isdigit():
+            return JsonResponse({'error': 'Invalid data'},
+                                status=status.HTTP_400_BAD_REQUEST)
+
         serializer = DataPointSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data,
+            return JsonResponse({'pk': serializer.data['id']},
                                 status=status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors,
                             status=status.HTTP_400_BAD_REQUEST)
