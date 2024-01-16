@@ -32,7 +32,6 @@ def add_data(request):
 
 def delete_data(request, data_point_id):
     if request.method == 'POST':
-        # data_point = DataPoint.objects.get(pk=data_point_id)
         data_point = get_object_or_404(DataPoint, pk=data_point_id)
         data_point.delete()
         return redirect('index')
@@ -43,7 +42,6 @@ def delete_data(request, data_point_id):
 
 
 # API
-
 @api_view(['GET', 'POST'])
 def manage_data_via_api(request):
     if request.method == 'GET':
@@ -52,17 +50,12 @@ def manage_data_via_api(request):
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
-        category = request.data.get('category', '')
-        if not category.isdigit():
-            return JsonResponse({'error': 'Invalid data'},
-                                status=status.HTTP_400_BAD_REQUEST)
-
         serializer = DataPointSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse({'pk': serializer.data['id']},
                                 status=status.HTTP_201_CREATED)
-        return JsonResponse(serializer.errors,
+        return JsonResponse({'error': 'Invalid data'},
                             status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -76,4 +69,4 @@ def delete_data_via_api(request, pk):
 
     if request.method == 'DELETE':
         data_point.delete()
-        return JsonResponse({'Deleted record with id': pk})
+        return JsonResponse({'pk': pk})
