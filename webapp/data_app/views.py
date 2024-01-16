@@ -54,7 +54,7 @@ def delete_data(request, data_point_id):
 # API
 
 @api_view(['GET', 'POST'])
-def data_point_manage(request):
+def manage_data_via_api(request):
     if request.method == 'GET':
         data_points = DataPoint.objects.all()
         serializer = DataPointSerializer(data_points, many=True)
@@ -71,7 +71,7 @@ def data_point_manage(request):
 
 
 @api_view(['DELETE'])
-def data_point_detail(request, pk):
+def delete_data_via_api(request, pk):
     try:
         data_point = DataPoint.objects.get(pk=pk)
     except DataPoint.DoesNotExist:

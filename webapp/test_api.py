@@ -13,9 +13,10 @@ headers = {'Content-Type': 'application/json'}  # specify that we're sending JSO
 response = requests.post('http://localhost:8000/api/data', data=json.dumps(new_data_point), headers=headers)
 print("\nPOST /api/data")
 print("Status code:", response.status_code)
-print("Response:", response.text)
+print("Response:", response.json())
 
 # DELETE api/data/<record_id>
+# Variable to make choosing ID easier
 record_id = 3
 response = requests.delete(f'http://localhost:8000/api/data/{record_id}')
 print("\nDELETE /api/data/<record_id>")
