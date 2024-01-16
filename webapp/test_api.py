@@ -14,3 +14,10 @@ response = requests.post('http://localhost:8000/api/data', data=json.dumps(new_d
 print("\nPOST /api/data")
 print("Status code:", response.status_code)
 print("Response:", response.text)
+
+# DELETE api/data/<record_id>
+record_id = 3
+response = requests.delete(f'http://localhost:8000/api/data/{record_id}')
+print("\nDELETE /api/data/<record_id>")
+print("Status code:", response.status_code)
+print("Response:", response.text)
