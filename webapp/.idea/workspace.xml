@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48332010-0d3c-413c-a059-07c20914a097" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapp.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e841436b-db4b-44f4-9eee-0979a8cf4eb2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e841436b-db4b-44f4-9eee-0979a8cf4eb2/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_app/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_app/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +44,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Studia/sem5/chmurki/cloud_django_project&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mika/Desktop/webapp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -104,6 +101,7 @@
       <workItem from="1705422553716" duration="4433000" />
       <workItem from="1705427355680" duration="7564000" />
       <workItem from="1705455824314" duration="925000" />
+      <workItem from="1705482592129" duration="22000" />
     </task>
     <servers />
   </component>

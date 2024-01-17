@@ -53,8 +53,7 @@ def manage_data_via_api(request):
         serializer = DataPointSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse({'pk': serializer.data['id']},
-                                status=status.HTTP_201_CREATED)
+            return JsonResponse({'pk': serializer.data['id']})
         return JsonResponse({'error': 'Invalid data'},
                             status=status.HTTP_400_BAD_REQUEST)
 
