@@ -2,6 +2,6 @@ from django.db import models
 
 
 class DataPoint(models.Model):
-    feature1 = models.FloatField()
-    feature2 = models.FloatField()
-    category = models.IntegerField()
+    height = models.FloatField()
+    weight = models.FloatField()
+    quality = models.IntegerField()

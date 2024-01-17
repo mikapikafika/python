@@ -7,17 +7,17 @@
         <table class="table table-striped">
             <tr>
                 <th scope="col">Sequence Number</th>
-                <th scope="col">Weight</th>
                 <th scope="col">Height</th>
+                <th scope="col">Weight</th>
                 <th scope="col">Quality</th>
                 <th scope="col"></th>
             </tr>
             {% for data_point in data_points %}
                 <tr>
                     <td>{{ data_point.id }}</td>
-                    <td>{{ data_point.feature1 }}</td>
-                    <td>{{ data_point.feature2 }}</td>
-                    <td>{{ data_point.category }}</td>
+                    <td>{{ data_point.height }}</td>
+                    <td>{{ data_point.weight }}</td>
+                    <td>{{ data_point.quality }}</td>
                     <td>
                         <form action="{% url 'delete' data_point.id %}"
                               method="POST">

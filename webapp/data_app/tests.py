@@ -10,13 +10,13 @@ class ApiTest(TestCase):
 
     # GET tests
     def test_data_get(self):
-        DataPoint.objects.create(feature1=4.20, feature2=6.66, category=5)
+        DataPoint.objects.create(height=1.84, weight=78.66, quality=3)
         response = self.client.get('/api/data')
         print(f'GET: {json.dumps(response.json(), indent=4)}')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()[0]['feature1'], 4.20)
-        self.assertEqual(response.json()[0]['feature2'], 6.66)
-        self.assertEqual(response.json()[0]['category'], 5)
+        self.assertEqual(response.json()[0]['height'], 1.84)
+        self.assertEqual(response.json()[0]['weight'], 78.66)
+        self.assertEqual(response.json()[0]['quality'], 3)
 
     def test_data_get_empty(self):
         response = self.client.get('/api/data')
@@ -25,22 +25,22 @@ class ApiTest(TestCase):
 
     # POST tests
     def test_data_post(self):
-        data_point = {"feature1": 4.20, "feature2": 6.66, "category": 5}
+        data_point = {"height": 1.84, "weight": 78.66, "quality": 3}
         response = self.client.post('/api/data', data_point)
         print(f'POST: {json.dumps(data_point)}')
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json().get('pk'), 1)
 
     def test_data_post_400(self):
-        data_point = {"feature1": "", "feature2": 6.66, "category": 5}
+        data_point = {"height": "", "weight": 78.66, "quality": 3}
         response = self.client.post('/api/data', data_point)
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json().get('error'), 'Invalid data')
 
     # DELETE tests
     def test_data_delete(self):
-        data_point = DataPoint.objects.create(feature1=4.20, feature2=6.66,
-                                              category=5)
+        data_point = DataPoint.objects.create(height=1.84, weight=78.66,
+                                              quality=3)
         response = self.client.delete(f'/api/data/{data_point.id}')
         print(f'DELETE: {json.dumps({"pk": data_point.pk})}')
         self.assertEqual(response.status_code, 200)
