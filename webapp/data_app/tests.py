@@ -1,5 +1,6 @@
-from django.test import TestCase, Client
+import json
 
+from django.test import TestCase, Client
 from data_app.models import DataPoint
 
 
@@ -11,6 +12,7 @@ class ApiTest(TestCase):
     def test_data_get(self):
         DataPoint.objects.create(feature1=4.20, feature2=6.66, category=5)
         response = self.client.get('/api/data')
+        print(f'GET: {json.dumps(response.json(), indent=4)}')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()[0]['feature1'], 4.20)
         self.assertEqual(response.json()[0]['feature2'], 6.66)
@@ -25,6 +27,7 @@ class ApiTest(TestCase):
     def test_data_post(self):
         data_point = {"feature1": 4.20, "feature2": 6.66, "category": 5}
         response = self.client.post('/api/data', data_point)
+        print(f'POST: {json.dumps(data_point)}')
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json().get('pk'), 1)
 
@@ -39,6 +42,7 @@ class ApiTest(TestCase):
         data_point = DataPoint.objects.create(feature1=4.20, feature2=6.66,
                                               category=5)
         response = self.client.delete(f'/api/data/{data_point.id}')
+        print(f'DELETE: {json.dumps({"pk": data_point.pk})}')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json().get('pk'), data_point.id)
         self.assertFalse(DataPoint.objects.filter(id=data_point.id).exists())
