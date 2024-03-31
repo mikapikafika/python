@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} Error {% endblock %}
+
+{% block content %}
+    <div class="error-container">
+        <h1>Error {{ error_code }}</h1>
+        <p>{{ error_message }}</p>
+    </div>
+
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+    </style>
+{% endblock %}

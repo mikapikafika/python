@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Add Data Point {% endblock %}
+
+{% block content %}
+    <div class="form-container container">
+        <h1 class="text-center">Add Data Point</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-outline-primary" type="submit">
+                Add Data Point
+            </button>
+        </form>
+    </div>
+
+    <style>
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+    </style>
+{% endblock %}
